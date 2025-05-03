@@ -9,14 +9,19 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
-template = """Question: {question}
+#template = """Question: {question}
 
-Answer: Let's think step by step."""
+#Answer: Let's think step by step and you can return your answer in one sentence."""
+#instructions = "You can only return one sentence"
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You can only return 10 words. Be concise and direct."),
+    ("human", "Question: {question}"),
+    ("ai", "Let's think step by step and return the answer in one sentence.")
+])
 
-prompt = ChatPromptTemplate.from_template(template)
 
 model = OllamaLLM(model="gemma3:12b-it-qat")
 
-chain = prompt | model
+chain =  prompt | model
 
-print(chain.invoke({"question": "What is LangChain?"}))
+print(chain.invoke({"question": "What is Napoli?"}))
