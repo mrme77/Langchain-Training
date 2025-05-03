@@ -23,5 +23,6 @@ messages = [
 ]
 time.sleep(10)
 ai_msg = llm.invoke(messages)
-print(ai_msg.content)
+#print(ai_msg.content)
+print(ai_msg)
 
