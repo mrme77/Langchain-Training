@@ -2,13 +2,15 @@ from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.runnable import RunnableLambda, RunnableParallel
 from langchain.schema.output_parser import StrOutputParser
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
+from langchain_ollama.llms import OllamaLLM
 
 # Load environment variables from .env
-load_dotenv()
+#load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4")
+#model = ChatOpenAI(model="gpt-4")
+model = OllamaLLM(model="gemma3:12b-it-qat", temperature=0.9, max_tokens=200, timeout=None, max_retries=1)
 
 # Define prompt template for movie summary
 summary_template = ChatPromptTemplate.from_messages(
@@ -61,6 +63,6 @@ chain = (
 )
 
 # Run the chain
-result = chain.invoke({"movie_name": "Inception"})
+result = chain.invoke({"movie_name": "Top-Gun"})
 
 print(result)
