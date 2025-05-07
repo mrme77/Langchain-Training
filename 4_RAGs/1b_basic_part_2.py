@@ -23,7 +23,7 @@ query = "Where does Gandalf meet Frodo?"
 # Retrieve relevant documents based on the query
 retriever = db.as_retriever(
     search_type="similarity_score_threshold",
-    search_kwargs={"k": 3, "score_threshold": 0.5}, 
+    search_kwargs={"k": 3, "score_threshold": 0.6}, 
 )
 relevant_docs = retriever.invoke(query)
 
