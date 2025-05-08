@@ -55,3 +55,6 @@ This directory contains examples of using LangChain agents for dynamic task exec
 - Install required dependencies:
   ```bash
   pip install -r requirements.txt
+
+## Acknowledgments
+This repository is based on the original LangChain course created by Harrish Neel. The revised fork builds upon the foundation laid by Harrish to explore advanced integrations with Ollama and Google Gemini models.
